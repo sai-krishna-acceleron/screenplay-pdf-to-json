@@ -1,6 +1,6 @@
 import json
 import re
-from screenplay_pdf_to_json.parse_pdf import cleanPage
+from screenplay_pdf_to_json.parse_pdf.cleanPage import cleanPage
 
 
 def processInitialPages(script):

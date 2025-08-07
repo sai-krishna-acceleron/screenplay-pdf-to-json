@@ -19,7 +19,11 @@ def extractCharacter(currentContent):
 
 def isCharacter(currentContent):
     text = currentContent["text"]
-    characterNameEnum = ["(V.O)", "(O.S)", "CONT'D"]
+    characterNameEnum = ["(V.O)", "(O.S)", "CONT'D", "(CONT'D)", "(V.O.)", "(O.S.)",
+                         "VOICE OVER", "OFF SCREEN", "VOICEOVER", "OFFSCREEN",
+                         "MORE", "(MORE)", "VOICE", "NARRATOR", "NARRATION",
+                         "NARRATOR'S VOICE", "NARRATOR'S NARRATION", "NARRATOR'S VOICEOVER",
+                         "NARRATOR'S OFFSCREEN", "NARRATOR'S OFFSCREEN VOICE"]
 
     if isParenthetical(text):
         return False
@@ -42,7 +46,9 @@ def isCharacter(currentContent):
     if any(x in text[-1] for x in ["-"]):
         return False
 
-    if currentContent["x"] < 150:
+    # Reducing the threshold for the text for the character detection,
+    # text might not exactly stay in the center of the page (reduced from 150 to 75)
+    if currentContent["x"] < 75:
         return False
 
     if any(x in text for x in [":"]):
