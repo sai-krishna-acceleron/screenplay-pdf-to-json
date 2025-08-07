@@ -1,7 +1,8 @@
+import re
 from sys import stderr
 
 def isParenthetical(text):
-    return "(" in text[0] and ")" in text[-1]
+    return bool(re.match(r'^\s*\(.*\)\s*$', text))
 
 
 def extractCharacter(currentContent):
